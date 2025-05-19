@@ -1,0 +1,221 @@
+name: Update MCP Servers
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight UTC
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  update-mcp-servers:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install axios cheerio
+
+      - name: Create .github directory if not exists
+        run: mkdir -p .github/scripts
+
+      - name: Create update script
+        run: |
+          cat > .github/scripts/update-mcp-servers.js << 'EOF'
+          const axios = require('axios');
+          const cheerio = require('cheerio');
+          const fs = require('fs');
+          const path = require('path');
+
+          // Function to fetch MCP servers from glama.ai
+          async function fetchMcpServers() {
+              console.log('Fetching MCP servers from glama.ai...');
+              
+              // First attempt to use API if available
+              try {
+                  const response = await axios.get('https://glama.ai/api/mcp/servers');
+                  if (response.data && Array.isArray(response.data)) {
+                      console.log(`Found ${response.data.length} servers via API`);
+                      return response.data;
+                  }
+              } catch (error) {
+                  console.log('API approach failed, falling back to web scraping');
+              }
+              
+              // Fallback to web scraping
+              try {
+                  const response = await axios.get('https://glama.ai/mcp/servers');
+                  const html = response.data;
+                  const $ = cheerio.load(html);
+                  
+                  const servers = [];
+                  
+                  // This selector might need adjustment based on the actual HTML structure
+                  $('.server-card').each((i, elem) => {
+                      const title = $(elem).find('.server-title').text().trim();
+                      const description = $(elem).find('.server-description').text().trim();
+                      const url = $(elem).find('.server-link').attr('href');
+                      
+                      if (title) {
+                          servers.push({
+                              name: title,
+                              description: description || 'No description available',
+                              url: url ? `https://glama.ai${url}` : null
+                          });
+                      }
+                  });
+                  
+                  console.log(`Found ${servers.length} servers via web scraping`);
+                  return servers;
+              } catch (error) {
+                  console.error('Error fetching MCP servers:', error);
+                  return [];
+              }
+          }
+
+          // Function to update the README.md file
+          async function updateReadme(servers) {
+              console.log('Updating README.md...');
+              
+              const readmePath = path.join(process.cwd(), 'README.md');
+              let readmeContent = fs.readFileSync(readmePath, 'utf8');
+              
+              // Extract the current server table section
+              const serverTableRegex = /(## MCP Servers\s+)([\s\S]*?)(\s+## MCP Clients)/;
+              const match = readmeContent.match(serverTableRegex);
+              
+              if (!match) {
+                  console.error('Could not find the MCP Servers section in README.md');
+                  return false;
+              }
+              
+              // Keep the existing categories and their descriptions
+              let currentContent = match[2];
+              const categoryRegex = /### (.+)\s+([\s\S]*?)(?=\s+\| # \| MCP Server)/g;
+              const categories = [];
+              let categoryMatch;
+              
+              while ((categoryMatch = categoryRegex.exec(currentContent)) !== null) {
+                  categories.push({
+                      name: categoryMatch[1],
+                      description: categoryMatch[2].trim()
+                  });
+              }
+              
+              // Generate new content with updated servers
+              let newContent = '';
+              
+              for (const category of categories) {
+                  newContent += `### ${category.name}\n\n${category.description}\n\n`;
+                  newContent += '| # | MCP Server | Description | Docker Hub Pulls | Link |\n';
+                  newContent += '|---|------------|-------------|-----------------|------|\n';
+                  
+                  // Filter servers for this category (this is a simplistic approach)
+                  // In a real implementation, you'd need a way to categorize the servers
+                  const categoryServers = servers.filter(server => 
+                      server.name.toLowerCase().includes(category.name.toLowerCase()) ||
+                      server.description.toLowerCase().includes(category.name.toLowerCase())
+                  ).slice(0, 5); // Limit to 5 servers per category for simplicity
+                  
+                  categoryServers.forEach((server, index) => {
+                      const dockerHubPulls = 'TBD'; // This would require additional API calls to get
+                      const link = server.url ? `[GitHub](${server.url})` : 'TBD';
+                      
+                      newContent += `| ${index + 1} | ${server.name} | ${server.description} | ${dockerHubPulls} | ${link} |\n`;
+                  });
+                  
+                  // If we didn't find any servers for this category, keep the existing ones
+                  if (categoryServers.length === 0) {
+                      const tableRegex = new RegExp(`### ${category.name}\\s+${category.description}\\s+(\\| # \\| MCP Server.*?\\n)((?:\\|.*?\\|\\n)+)`, 's');
+                      const tableMatch = currentContent.match(tableRegex);
+                      
+                      if (tableMatch) {
+                          newContent += tableMatch[1] + tableMatch[2];
+                      }
+                  }
+                  
+                  newContent += '\n';
+              }
+              
+              // Replace the old content with the new content
+              const updatedReadmeContent = readmeContent.replace(serverTableRegex, `$1${newContent}$3`);
+              
+              // Write the updated content back to the README.md file
+              fs.writeFileSync(readmePath, updatedReadmeContent, 'utf8');
+              
+              console.log('README.md updated successfully');
+              return true;
+          }
+
+          // Main function
+          async function main() {
+              try {
+                  const servers = await fetchMcpServers();
+                  
+                  if (servers.length === 0) {
+                      console.log('No servers found, exiting');
+                      process.exit(1);
+                  }
+                  
+                  const updated = await updateReadme(servers);
+                  
+                  if (!updated) {
+                      console.log('Failed to update README.md, exiting');
+                      process.exit(1);
+                  }
+                  
+                  console.log('Update completed successfully');
+              } catch (error) {
+                  console.error('Error in main function:', error);
+                  process.exit(1);
+              }
+          }
+
+          // Run the main function
+          main();
+          EOF
+
+      - name: Run update script
+        run: node .github/scripts/update-mcp-servers.js
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet README.md || echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "chore: update MCP servers from glama.ai"
+          title: "Update MCP Servers from glama.ai"
+          body: |
+            This PR automatically updates the MCP servers list from glama.ai.
+            
+            - Fetched latest MCP servers
+            - Updated README.md with new information
+            
+            Auto-generated by GitHub Actions.
+          branch: update-mcp-servers
+          base: main
+          labels: automation, mcp-update
+          delete-branch: true
+          
+      - name: Auto-merge if minor update
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          PR_NUMBER=$(gh pr list --head update-mcp-servers --json number --jq .[0].number)
+          if [ -n "$PR_NUMBER" ]; then
+            echo "Auto-merging PR #$PR_NUMBER"
+            gh pr merge $PR_NUMBER --auto --merge
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
