@@ -10,10 +10,6 @@
 
 A comprehensive curated list of MCP Server, Clients and toolkits.
 
-## Quick Search
-Use browser search (Ctrl+F or Cmd+F) to find specific MCP servers by name or functionality.
-
-[Click here to search this repo on GitHub](https://github.com/ajeetraina/awesome-docker-mcp-servers/search?q=)
 
 ## Docker MCP Toolkits
 
