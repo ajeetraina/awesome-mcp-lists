@@ -1,0 +1,40 @@
+<!-- This is an SVG placeholder for the MCP diagram -->
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <style>
+    .title { font-family: 'Arial', sans-serif; font-size: 24px; font-weight: bold; }
+    .box { stroke: #3498db; stroke-width: 2; fill: #f8f9fa; }
+    .arrow { stroke: #2c3e50; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    .label { font-family: 'Arial', sans-serif; font-size: 16px; }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50" />
+    </marker>
+  </defs>
+  
+  <text x="320" y="40" text-anchor="middle" class="title">Model Context Protocol (MCP)</text>
+  
+  <!-- MCP Client Box -->
+  <rect x="100" y="100" width="200" height="100" rx="10" ry="10" class="box" />
+  <text x="200" y="150" text-anchor="middle" class="label">MCP Clients</text>
+  <text x="200" y="180" text-anchor="middle" font-size="12">Claude, Cursor AI, etc.</text>
+  
+  <!-- MCP Server Box -->
+  <rect x="500" y="100" width="200" height="100" rx="10" ry="10" class="box" />
+  <text x="600" y="150" text-anchor="middle" class="label">MCP Servers</text>
+  <text x="600" y="180" text-anchor="middle" font-size="12">GitHub, Docker, Brave, etc.</text>
+  
+  <!-- External Resources Box -->
+  <rect x="500" y="300" width="200" height="100" rx="10" ry="10" class="box" />
+  <text x="600" y="350" text-anchor="middle" class="label">External Resources</text>
+  <text x="600" y="380" text-anchor="middle" font-size="12">APIs, Files, Databases, etc.</text>
+  
+  <!-- Arrows -->
+  <path d="M 300 150 L 490 150" class="arrow" />
+  <path d="M 600 200 L 600 290" class="arrow" />
+  
+  <!-- Labels for arrows -->
+  <text x="400" y="140" text-anchor="middle" class="label" font-size="14">Requests</text>
+  <text x="620" y="250" text-anchor="middle" class="label" font-size="14">Access</text>
+</svg>
