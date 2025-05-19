@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Landscape - Your #1 Community Platform for discovering MCP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/mcp-landscape-logo.png" alt="MCP Landscape Logo" onerror="this.src='https://via.placeholder.com/200x50?text=MCP+Landscape'">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#servers">MCP Servers</a></li>
+                    <li><a href="#clients">MCP Clients</a></li>
+                    <li><a href="#toolkits">MCP Toolkits</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="https://github.com/collabnix/awesome-mcp-lists" target="_blank">GitHub</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>MCP Landscape</h1>
+                <p class="subtitle">Your #1 Community Platform for discovering Model Context Protocol</p>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search for MCP servers, clients, or toolkits...">
+                    <button id="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="server-count">100+</span>
+                        <span class="stat-label">MCP Servers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="client-count">50+</span>
+                        <span class="stat-label">MCP Clients</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="toolkit-count">30+</span>
+                        <span class="stat-label">MCP Toolkits</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="what-is-mcp">
+        <div class="container">
+            <h2>What is Model Context Protocol (MCP)?</h2>
+            <div class="mcp-description">
+                <p>
+                    Model Context Protocol (MCP) is an open protocol that enables AI models to securely interact with local and remote resources through standardized server implementations. MCP servers extend AI capabilities through file access, database connections, API integrations, and other contextual services.
+                </p>
+                <div class="mcp-diagram">
+                    <img src="images/mcp-diagram.png" alt="MCP Diagram" onerror="this.src='https://via.placeholder.com/800x400?text=MCP+Diagram'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>What makes MCP Landscape special?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-cubes"></i>
+                    <h3>Comprehensive Collection</h3>
+                    <p>Access the most comprehensive curated list of MCP Servers, Clients, and Toolkits in one place.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Auto-Updated</h3>
+                    <p>Our list automatically updates daily from multiple sources including glama.ai/mcp to ensure the latest content.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community-Driven</h3>
+                    <p>Built by the community, for the community. Contribute and help shape the MCP ecosystem.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-filter"></i>
+                    <h3>Categorized</h3>
+                    <p>All MCP resources are carefully categorized for easy discovery and navigation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servers" class="content-section">
+        <div class="container">
+            <h2>MCP Servers</h2>
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">All</button>
+                <button class="category-tab" data-category="devops">DevOps</button>
+                <button class="category-tab" data-category="database">Database</button>
+                <button class="category-tab" data-category="web">Web</button>
+                <button class="category-tab" data-category="ai">AI</button>
+                <button class="category-tab" data-category="security">Security</button>
+            </div>
+            <div id="server-grid" class="grid-layout">
+                <!-- Server cards will be dynamically added here -->
+                <div class="loading-spinner">Loading servers...</div>
+            </div>
+            <div class="view-more-container">
+                <a href="https://github.com/collabnix/awesome-mcp-lists#mcp-servers" class="view-more-btn" target="_blank">View All MCP Servers</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="clients" class="content-section">
+        <div class="container">
+            <h2>MCP Clients</h2>
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">All</button>
+                <button class="category-tab" data-category="desktop">Desktop</button>
+                <button class="category-tab" data-category="mobile">Mobile</button>
+                <button class="category-tab" data-category="ide">IDE</button>
+                <button class="category-tab" data-category="cli">CLI</button>
+                <button class="category-tab" data-category="web">Web</button>
+            </div>
+            <div id="client-grid" class="grid-layout">
+                <!-- Client cards will be dynamically added here -->
+                <div class="loading-spinner">Loading clients...</div>
+            </div>
+            <div class="view-more-container">
+                <a href="https://github.com/collabnix/awesome-mcp-lists#mcp-clients" class="view-more-btn" target="_blank">View All MCP Clients</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="toolkits" class="content-section">
+        <div class="container">
+            <h2>MCP Toolkits</h2>
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">All</button>
+                <button class="category-tab" data-category="sdks">SDKs</button>
+                <button class="category-tab" data-category="frameworks">Frameworks</button>
+                <button class="category-tab" data-category="testing">Testing</button>
+                <button class="category-tab" data-category="utilities">Utilities</button>
+                <button class="category-tab" data-category="hosting">Hosting</button>
+            </div>
+            <div id="toolkit-grid" class="grid-layout">
+                <!-- Toolkit cards will be dynamically added here -->
+                <div class="loading-spinner">Loading toolkits...</div>
+            </div>
+            <div class="view-more-container">
+                <a href="https://github.com/collabnix/awesome-mcp-lists#mcp-toolkits" class="view-more-btn" target="_blank">View All MCP Toolkits</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About MCP Landscape</h2>
+            <div class="about-content">
+                <p>
+                    MCP Landscape is a community-driven project that aims to be the central hub for discovering and learning about Model Context Protocol (MCP) resources. We provide a comprehensive, up-to-date collection of MCP Servers, Clients, and Toolkits to help developers, AI enthusiasts, and organizations leverage the power of MCP.
+                </p>
+                <p>
+                    This project is maintained by <a href="https://github.com/collabnix" target="_blank">Collabnix</a>, a community that focuses on container technology, cloud-native tools, and AI technologies. We believe in open source and community collaboration to drive innovation in the AI space.
+                </p>
+                <div class="contribute-box">
+                    <h3>Want to Contribute?</h3>
+                    <p>
+                        We welcome contributions from the community! Whether it's adding new MCP resources, improving documentation, or fixing bugs, every contribution helps make MCP Landscape better.
+                    </p>
+                    <a href="https://github.com/collabnix/awesome-mcp-lists#contributing" class="contribute-btn" target="_blank">Learn How to Contribute</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>MCP Landscape</h3>
+                    <p>Your #1 Community Platform for discovering Model Context Protocol</p>
+                    <div class="social-links">
+                        <a href="https://github.com/collabnix/awesome-mcp-lists" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/collabnix" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/collabnix/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#servers">MCP Servers</a></li>
+                        <li><a href="#clients">MCP Clients</a></li>
+                        <li><a href="#toolkits">MCP Toolkits</a></li>
+                        <li><a href="https://github.com/collabnix/awesome-mcp-lists/blob/main/README.md" target="_blank">README</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="https://github.com/collabnix/awesome-mcp-lists#contributing" target="_blank">Contributing</a></li>
+                        <li><a href="https://github.com/collabnix/awesome-mcp-lists/issues" target="_blank">Issues</a></li>
+                        <li><a href="https://github.com/collabnix/awesome-mcp-lists/pulls" target="_blank">Pull Requests</a></li>
+                        <li><a href="https://collabnix.com/" target="_blank">Collabnix</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="https://github.com/collabnix/awesome-mcp-lists/blob/main/LICENSE" target="_blank">License</a></li>
+                        <li><a href="https://github.com/collabnix/awesome-mcp-lists/blob/main/CODE_OF_CONDUCT.md" target="_blank">Code of Conduct</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MCP Landscape. All rights reserved.</p>
+                <p>Powered by <a href="https://github.com/collabnix" target="_blank">Collabnix</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
