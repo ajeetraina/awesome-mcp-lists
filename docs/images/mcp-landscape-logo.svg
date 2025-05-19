@@ -1,0 +1,10 @@
+<!-- This is an SVG placeholder for the MCP Landscape logo -->
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50" viewBox="0 0 200 50">
+  <style>
+    .title { font-family: 'Arial', sans-serif; font-size: 24px; font-weight: bold; }
+    .subtitle { font-family: 'Arial', sans-serif; font-size: 12px; }
+  </style>
+  <rect width="200" height="50" fill="#2c3e50" rx="5" ry="5"/>
+  <text x="10" y="30" fill="#3498db" class="title">MCP Landscape</text>
+  <text x="10" y="45" fill="#2ecc71" class="subtitle">Your #1 Community Platform</text>
+</svg>
