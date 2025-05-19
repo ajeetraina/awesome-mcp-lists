@@ -127,26 +127,3 @@ A comprehensive curated list of MCP Server, Clients and toolkits.
 
 
 
-*Note: The table has been reordered based on estimated popularity. "TBD" in the Docker Hub Pulls column indicates that the actual pull count needs to be added by checking each image on Docker Hub.*
-
-## Using Docker MCP Toolkit
-
-To use Docker MCP Toolkit, you need:
-1. Docker Desktop 4.40 or higher
-2. Install the extension from Docker Hub
-3. Browse available MCP servers and connect them to your MCP client (like Claude Desktop)
-
-### Installation Steps
-
-1. Open Docker Desktop
-2. Go to Extensions Marketplace
-3. Search for "Docker MCP Toolkit"
-4. Click Install
-5. Once installed, open the extension from the left sidebar
-6. Browse the catalog and start using MCP tools with your AI assistant
-
-### Getting Pull Counts
-
-To view the Docker Hub pull counts for a specific MCP server:
-1. Visit `https://hub.docker.com/r/mcp/[server-name]` (replace [server-name] with the actual server name)
-2. The pull count is displayed on the server's Docker Hub page
