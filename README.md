@@ -1,21 +1,21 @@
-# A Curated List of Docker MCP Servers
+# A Curated List of MCP Servers, Clients and Toolkits
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![GitHub stars](https://img.shields.io/github/stars/ajeetraina/awesome-docker-mcp-servers.svg)](https://github.com/ajeetraina/awesome-docker-mcp-servers/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/ajeetraina/awesome-docker-mcp-servers.svg)](https://github.com/ajeetraina/awesome-docker-mcp-servers/network)
-[![GitHub issues](https://img.shields.io/github/issues/ajeetraina/awesome-docker-mcp-servers.svg)](https://github.com/ajeetraina/awesome-docker-mcp-servers/issues)
-[![GitHub license](https://img.shields.io/github/license/ajeetraina/awesome-docker-mcp-servers.svg)](https://github.com/ajeetraina/awesome-docker-mcp-servers/blob/main/LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/ajeetraina/awesome-docker-mcp-servers/pulls)
+[![GitHub stars](https://img.shields.io/github/stars/collabnix/awesome-mcp-lists.svg)](https://github.com/ajeetraina/awesome-docker-mcp-servers/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/collabnix/awesome-mcp-lists.svg)](https://github.com/ajeetraina/awesome-docker-mcp-servers/network)
+[![GitHub issues](https://img.shields.io/github/issues/collabnix/awesome-mcp-lists.svg)](https://github.com/ajeetraina/awesome-docker-mcp-servers/issues)
+[![GitHub license](https://img.shields.io/github/license/collabnix/awesome-mcp-lists.svg)](https://github.com/ajeetraina/awesome-docker-mcp-servers/blob/main/LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/collabnix/awesome-mcp-lists/pulls)
 [![Docker MCP](https://img.shields.io/badge/Docker-MCP-blue)](https://www.docker.com/)
 
-A comprehensive curated list of MCP Server and Clients supported by Docker Inc and included in the new Docker MCP Toolkit Extension.
+A comprehensive curated list of MCP Server, Clients and toolkits.
 
 ## Quick Search
 Use browser search (Ctrl+F or Cmd+F) to find specific MCP servers by name or functionality.
 
 [Click here to search this repo on GitHub](https://github.com/ajeetraina/awesome-docker-mcp-servers/search?q=)
 
-There are currently 109 MCP servers available:
+## Docker MCP Toolkits
 
 | # | MCP Server | Description | Docker Hub Pulls | Link |
 |---|------------|-------------|------------------|------|
