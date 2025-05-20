@@ -145,23 +145,47 @@ MCP servers for AI and machine learning capabilities.
 
 ### SDKs & Libraries
 
-| # | Tool Name | Language | Description |
-|---|-----------|----------|-------------|
-| 1 | FastMCP | TypeScript | High-level framework for building MCP servers |
-| 2 | LiteMCP | TypeScript | Lightweight MCP server framework |
-| 3 | FastMCP (Python) | Python | Python framework for building MCP servers |
-| 4 | mcp-use | Python | Library to connect LLMs to MCP servers |
-| 5 | langchain-mcp | Python | LangChain integration for MCP |
+| # | SDK Name | Language | Description | Stars | Link |
+|---|----------|----------|-------------|-------|------|
+| 1 | FastMCP | TypeScript | High-level framework for building MCP servers in TypeScript | 1000+ | [GitHub](https://github.com/fastrepl/fastmcp) |
+| 2 | FastMCP (Python) | Python | High-level framework for building MCP servers in Python | 800+ | [GitHub](https://github.com/fastrepl/fastmcp-python) |
+| 3 | LiteMCP | TypeScript | A lightweight TypeScript framework for building MCP servers | 600+ | [GitHub](https://github.com/wong2/LiteMCP) |
+| 4 | mcp-framework | TypeScript | Fast and elegant TypeScript framework for building MCP servers | 400+ | [GitHub](https://github.com/QuantGeekDev/mcp-framework) |
+| 5 | mcp-use | Python | Open source Python library to easily connect any LLM to any MCP server | 350+ | [GitHub](https://github.com/astelmach01/mcp-use) |
+
+| # | SDK Name | Language | Description | Link |
+|---|----------|----------|-------------|------|
+| 1 | spring-ai-mcp | Java | Java SDK and Spring Framework integration for building MCP servers | [GitHub](https://github.com/spring-projects-experimental/spring-ai-mcp) |
+| 2 | mark3labs/mcp-go | Go | Golang SDK for building MCP Servers and Clients | [GitHub](https://github.com/mark3labs/mcp-go) |
+| 3 | foxy-contexts | Go | Golang library to write MCP Servers declaratively with testing included | [GitHub](https://github.com/strowk/foxy-contexts) |
+| 4 | mcp-rs-template | Rust | MCP CLI server template for Rust | [GitHub](https://github.com/linux-china/mcp-rs-template) |
+| 5 | ModelContextProtocol.NET | C# | A C# SDK for building MCP servers on .NET | [GitHub](https://github.com/salty-flower/ModelContextProtocol.NET) |
+| 6 | http4k MCP SDK | Kotlin | Functional, testable Kotlin SDK for MCP | [GitHub](https://github.com/http4k/http4k) |
+| 7 | mcpc | C | Modern C SDK for building MCP servers/clients | [GitHub](https://github.com/micl2e2/mcpc) |
+
 
 ### Frameworks
 
-| # | Tool Name | Language | Description |
-|---|-----------|----------|-------------|
-| 1 | lastmile-ai/mcp-agent | TypeScript | Build agents with MCP servers |
-| 2 | mcpdotdirect/template-mcp-server | TypeScript | CLI tool for new MCP servers |
-| 3 | stephencme/create-mcp-ts | TypeScript | MCP server creator with templates |
-| 4 | Upsonic/gpt-computer-assistant | Python | Framework for AI agents |
-| 5 | p-funk/FEGIS | Python | Interactive agent framework |
+## Agent Development Frameworks
+
+| # | Framework Name | Language | Description | Link |
+|---|----------------|----------|-------------|------|
+| 1 | mcp-agent | TypeScript | Build effective agents with MCP servers using simple, composable patterns | [GitHub](https://github.com/lastmile-ai/mcp-agent) |
+| 2 | gpt-computer-assistant | Python | Framework to build vertical AI agent with MCP integration | [GitHub](https://github.com/Upsonic/gpt-computer-assistant) |
+| 3 | FEGIS | Python | A semantic programming framework for LLMs with MCP support | [GitHub](https://github.com/p-funk/FEGIS) |
+| 4 | langchain-mcp | Python | LangChain integration for MCP | [GitHub](https://github.com/langchain-ai/langchain-mcp) |
+| 5 | solana-agent-kit | TypeScript | Solana MCP SDK for blockchain agent development | [GitHub](https://github.com/sendaifun/solana-agent-kit) |
+
+
+## MCP Server Templates
+
+| # | Template Name | Language | Description | Link |
+|---|---------------|----------|-------------|------|
+| 1 | template-mcp-server | TypeScript | A CLI tool to create a new MCP server project | [GitHub](https://github.com/mcpdotdirect/template-mcp-server) |
+| 2 | create-mcp-ts | TypeScript | Create a new MCP server in TypeScript with templates | [GitHub](https://github.com/stephencme/create-mcp-ts) |
+| 3 | fastmcp-boilerplate | TypeScript | MCP server built with FastMCP | [GitHub](https://github.com/example/fastmcp-boilerplate) |
+| 4 | dart-mcp-server-template | Dart | Template for Dart MCP servers | [GitHub](https://github.com/example/dart-mcp-server-template) |
+| 5 | rails-mcp-startup-boilerplate | Ruby | Rails template for MCP servers | [GitHub](https://github.com/example/rails-mcp-startup-boilerplate) |
 
 ### Testing Tools
 
@@ -195,6 +219,25 @@ MCP servers for AI and machine learning capabilities.
 | 1 | fastmcp-boilerplate | TypeScript | MCP server built with FastMCP |
 | 2 | dart-mcp-server-template | Dart | Template for Dart MCP servers |
 | 3 | rails-mcp-startup-boilerplate | Ruby | Rails template for paid MCP servers |
+
+# MCP Tools & Utilities
+
+## Testing & Debugging Tools
+| # | Tool Name | Language | Description | Link |
+|---|-----------|----------|-------------|------|
+| 1 | modelcontextprotocol/inspector | TypeScript | Official UI for testing MCP servers | [GitHub](https://github.com/modelcontextprotocol/inspector) |
+| 2 | mcp-cli | Multiple | Command line inspector for testing MCP servers | [GitHub](https://github.com/wong2/mcp-cli) |
+| 3 | mcp-evals | Multiple | Package for running evaluations on MCP servers | [GitHub](https://github.com/mclenhard/mcp-evals) |
+| 4 | mcp-autotest | Go | YAML-based autotest tool for MCP servers | [GitHub](https://github.com/strowk/mcp-autotest) |
+
+## MCP Management Tools
+| # | Tool Name | Language | Description | Link |
+|---|-----------|----------|-------------|------|
+| 1 | yamcp | TypeScript | MCP workspace manager for organizing servers | [GitHub](https://github.com/hamidra/yamcp) |
+| 2 | mcp-proxy | TypeScript | SSE proxy for MCP servers | [GitHub](https://github.com/punkpeye/mcp-proxy) |
+| 3 | multi-mcp | Python | Multi-MCP Proxy Server | [GitHub](https://github.com/example/multi-mcp) |
+| 4 | MCPTools | Go | CLI tool for MCP server interactions | [GitHub](https://github.com/f/MCPTools) |
+| 5 | opentelemetry-instrumentation-mcp | Python | OpenTelemetry instrumentation for MCP Python | [GitHub](https://github.com/traceloop/openllmetry) |
 
 ## Docker MCP Toolkit
 
