@@ -145,6 +145,8 @@ MCP servers for AI and machine learning capabilities.
 
 ### SDKs & Libraries
 
+| # | Tool Name | Language | Description | GitHub Stars | GitHub |
+|---|-----------|----------|-------------|-------------|-------------|
 | 1 | FastMCP | TypeScript | High-level framework for building MCP servers in TypeScript | 1000+ | [GitHub](https://github.com/fastrepl/fastmcp) |
 | 2 | FastMCP (Python) | Python | High-level framework for building MCP servers in Python | 800+ | [GitHub](https://github.com/fastrepl/fastmcp-python) |
 | 3 | LiteMCP | TypeScript | A lightweight TypeScript framework for building MCP servers | 600+ | [GitHub](https://github.com/wong2/LiteMCP) |
