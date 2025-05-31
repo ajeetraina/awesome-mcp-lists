@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn MCP - Complete Tutorial Guide</title>
+    <link rel="stylesheet" href="tutorial-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="tutorial-container">
+        <!-- Header -->
+        <header class="tutorial-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">MCP</div>
+                    <h1>Learn Model Context Protocol</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="os-toggle" onclick="toggleOS()">
+                        <span id="current-os">macOS</span> / Linux
+                    </button>
+                    <a href="index.html" class="back-link">← Back to Portal</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="tutorial-layout">
+            <!-- Left Sidebar Navigation -->
+            <nav class="sidebar">
+                <div class="sidebar-content">
+                    <div class="progress-indicator">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">0% Complete</span>
+                    </div>
+
+                    <div class="tutorial-sections">
+                        <div class="section-group">
+                            <h3>Getting Started</h3>
+                            <ul>
+                                <li><a href="#introduction" class="nav-link active" data-section="introduction">Introduction to MCP</a></li>
+                                <li><a href="#architecture" class="nav-link" data-section="architecture">Understanding Architecture</a></li>
+                                <li><a href="#installation" class="nav-link" data-section="installation">Installation & Setup</a></li>
+                                <li><a href="#first-connection" class="nav-link" data-section="first-connection">Your First MCP Connection</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="section-group">
+                            <h3>Using MCP</h3>
+                            <ul>
+                                <li><a href="#claude-setup" class="nav-link" data-section="claude-setup">Setting up Claude Desktop</a></li>
+                                <li><a href="#server-config" class="nav-link" data-section="server-config">Configuring MCP Servers</a></li>
+                                <li><a href="#common-servers" class="nav-link" data-section="common-servers">Popular MCP Servers</a></li>
+                                <li><a href="#troubleshooting" class="nav-link" data-section="troubleshooting">Troubleshooting Guide</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="section-group">
+                            <h3>Building with MCP</h3>
+                            <ul>
+                                <li><a href="#server-development" class="nav-link" data-section="server-development">Building Your First Server</a></li>
+                                <li><a href="#resources" class="nav-link" data-section="resources">Working with Resources</a></li>
+                                <li><a href="#tools" class="nav-link" data-section="tools">Creating Tools</a></li>
+                                <li><a href="#prompts" class="nav-link" data-section="prompts">Managing Prompts</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="section-group">
+                            <h3>Advanced Topics</h3>
+                            <ul>
+                                <li><a href="#security" class="nav-link" data-section="security">Security Best Practices</a></li>
+                                <li><a href="#performance" class="nav-link" data-section="performance">Performance Optimization</a></li>
+                                <li><a href="#testing" class="nav-link" data-section="testing">Testing & Debugging</a></li>
+                                <li><a href="#deployment" class="nav-link" data-section="deployment">Production Deployment</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="section-group">
+                            <h3>Examples & Projects</h3>
+                            <ul>
+                                <li><a href="#file-system" class="nav-link" data-section="file-system">File System Server</a></li>
+                                <li><a href="#database" class="nav-link" data-section="database">Database Integration</a></li>
+                                <li><a href="#web-api" class="nav-link" data-section="web-api">Web API Server</a></li>
+                                <li><a href="#ai-tools" class="nav-link" data-section="ai-tools">AI-Powered Tools</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="tutorial-content">
+                <!-- Introduction Section -->
+                <section id="introduction" class="content-section active">
+                    <div class="section-header">
+                        <h2>Introduction to Model Context Protocol</h2>
+                        <div class="section-meta">
+                            <span class="duration">⏱️ 15 minutes</span>
+                            <span class="difficulty beginner">🟢 Beginner</span>
+                        </div>
+                    </div>
+
+                    <div class="content-body">
+                        <div class="intro-highlight">
+                            <h3>🚀 What is MCP?</h3>
+                            <p>Model Context Protocol (MCP) is like a <strong>USB-C port for AI applications</strong>. Just as USB-C provides a standardized way to connect devices to peripherals, MCP provides a standardized way to connect AI models to different data sources and tools.</p>
+                        </div>
+
+                        <div class="concept-grid">
+                            <div class="concept-card">
+                                <div class="concept-icon">🔌</div>
+                                <h4>Standardized Connections</h4>
+                                <p>Connect any AI model to any data source using a common protocol</p>
+                            </div>
+                            <div class="concept-card">
+                                <div class="concept-icon">🔄</div>
+                                <h4>Flexible Integration</h4>
+                                <p>Switch between LLM providers and vendors without changing your integrations</p>
+                            </div>
+                            <div class="concept-card">
+                                <div class="concept-icon">🔒</div>
+                                <h4>Secure by Design</h4>
+                                <p>Keep your data secure within your infrastructure with best practices built-in</p>
+                            </div>
+                        </div>
+
+                        <div class="why-mcp">
+                            <h3>Why Use MCP?</h3>
+                            <ul class="benefit-list">
+                                <li><strong>Pre-built Integrations:</strong> Access a growing library of ready-to-use MCP servers</li>
+                                <li><strong>Vendor Independence:</strong> Avoid lock-in with any specific AI provider</li>
+                                <li><strong>Security First:</strong> Control exactly what data your AI can access</li>
+                                <li><strong>Rapid Development:</strong> Build complex AI workflows quickly</li>
+                                <li><strong>Community Driven:</strong> Benefit from open-source development and contributions</li>
+                            </ul>
+                        </div>
+
+                        <div class="use-cases">
+                            <h3>Common Use Cases</h3>
+                            <div class="use-case-grid">
+                                <div class="use-case">
+                                    <h4>💻 Development Tools</h4>
+                                    <p>Connect AI to your IDE, GitHub, Docker, and deployment tools</p>
+                                </div>
+                                <div class="use-case">
+                                    <h4>📊 Data Analysis</h4>
+                                    <p>Let AI query databases, analyze files, and generate reports</p>
+                                </div>
+                                <div class="use-case">
+                                    <h4>🌐 Web Integration</h4>
+                                    <p>Enable AI to search the web, scrape content, and call APIs</p>
+                                </div>
+                                <div class="use-case">
+                                    <h4>🤖 Automation</h4>
+                                    <p>Build AI agents that can perform actions across multiple systems</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="next-steps">
+                            <h3>Ready to Get Started?</h3>
+                            <p>In the next section, we'll explore MCP's architecture to understand how all the pieces fit together.</p>
+                            <button class="next-button" onclick="navigateToSection('architecture')">
+                                Next: Understanding Architecture →
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architecture Section -->
+                <section id="architecture" class="content-section">
+                    <div class="section-header">
+                        <h2>Understanding MCP Architecture</h2>
+                        <div class="section-meta">
+                            <span class="duration">⏱️ 20 minutes</span>
+                            <span class="difficulty beginner">🟢 Beginner</span>
+                        </div>
+                    </div>
+
+                    <div class="content-body">
+                        <div class="architecture-diagram">
+                            <h3>🏗️ MCP Components</h3>
+                            <div class="diagram-container">
+                                <div class="component host">
+                                    <h4>MCP Host</h4>
+                                    <p>Claude Desktop, IDEs, AI Tools</p>
+                                </div>
+                                <div class="arrow">↔️</div>
+                                <div class="component client">
+                                    <h4>MCP Client</h4>
+                                    <p>Protocol Handler</p>
+                                </div>
+                                <div class="arrow">↔️</div>
+                                <div class="component server">
+                                    <h4>MCP Server</h4>
+                                    <p>Exposes capabilities</p>
+                                </div>
+                                <div class="arrow">↔️</div>
+                                <div class="component data">
+                                    <h4>Data Sources</h4>
+                                    <p>Files, APIs, Databases</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="component-details">
+                            <div class="detail-card">
+                                <h4>🖥️ MCP Hosts</h4>
+                                <p>Applications that want to access data through MCP:</p>
+                                <ul>
+                                    <li>Claude Desktop</li>
+                                    <li>IDEs and code editors</li>
+                                    <li>Custom AI applications</li>
+                                    <li>Workflow automation tools</li>
+                                </ul>
+                            </div>
+
+                            <div class="detail-card">
+                                <h4>🔌 MCP Clients</h4>
+                                <p>Protocol clients that maintain connections with servers:</p>
+                                <ul>
+                                    <li>Handle the MCP protocol communication</li>
+                                    <li>Maintain 1:1 connections with servers</li>
+                                    <li>Translate between host requests and server responses</li>
+                                    <li>Manage authentication and security</li>
+                                </ul>
+                            </div>
+
+                            <div class="detail-card">
+                                <h4>⚙️ MCP Servers</h4>
+                                <p>Lightweight programs that expose specific capabilities:</p>
+                                <ul>
+                                    <li><strong>Resources:</strong> Expose data and content</li>
+                                    <li><strong>Tools:</strong> Enable actions and operations</li>
+                                    <li><strong>Prompts:</strong> Provide reusable templates</li>
+                                    <li><strong>Sampling:</strong> Request completions from LLMs</li>
+                                </ul>
+                            </div>
+
+                            <div class="detail-card">
+                                <h4>💾 Data Sources</h4>
+                                <p>The actual systems that MCP servers connect to:</p>
+                                <ul>
+                                    <li><strong>Local:</strong> Files, databases, system services</li>
+                                    <li><strong>Remote:</strong> APIs, web services, cloud platforms</li>
+                                    <li><strong>Hybrid:</strong> Combinations of local and remote sources</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="communication-flow">
+                            <h3>📡 How They Communicate</h3>
+                            <div class="flow-steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Host Request</h4>
+                                        <p>AI application needs to access data or perform an action</p>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Client Processing</h4>
+                                        <p>MCP client translates the request into MCP protocol</p>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Server Execution</h4>
+                                        <p>MCP server processes the request and accesses data sources</p>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h4>Response Flow</h4>
+                                        <p>Data flows back through the same chain to the AI application</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="transport-methods">
+                            <h3>🚀 Transport Methods</h3>
+                            <div class="transport-grid">
+                                <div class="transport-card">
+                                    <h4>Standard I/O (stdio)</h4>
+                                    <p>Most common for local development</p>
+                                    <div class="pros-cons">
+                                        <div class="pros">✅ Simple, Direct, Fast</div>
+                                        <div class="cons">❌ Local only</div>
+                                    </div>
+                                </div>
+                                <div class="transport-card">
+                                    <h4>HTTP/HTTPS</h4>
+                                    <p>Best for web-based integrations</p>
+                                    <div class="pros-cons">
+                                        <div class="pros">✅ Web standard, Secure</div>
+                                        <div class="cons">❌ More overhead</div>
+                                    </div>
+                                </div>
+                                <div class="transport-card">
+                                    <h4>WebSockets</h4>
+                                    <p>Great for real-time applications</p>
+                                    <div class="pros-cons">
+                                        <div class="pros">✅ Real-time, Bidirectional</div>
+                                        <div class="cons">❌ Complex setup</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="next-steps">
+                            <h3>Next Steps</h3>
+                            <p>Now that you understand the architecture, let's get MCP installed on your system!</p>
+                            <button class="next-button" onclick="navigateToSection('installation')">
+                                Next: Installation & Setup →
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Installation Section -->
+                <section id="installation" class="content-section">
+                    <div class="section-header">
+                        <h2>Installation & Setup</h2>
+                        <div class="section-meta">
+                            <span class="duration">⏱️ 30 minutes</span>
+                            <span class="difficulty beginner">🟢 Beginner</span>
+                        </div>
+                    </div>
+
+                    <div class="content-body">
+                        <div class="os-selector">
+                            <h3>Choose Your Operating System</h3>
+                            <div class="os-buttons">
+                                <button class="os-button active" data-os="macos" onclick="switchOS('macos')">
+                                    🍎 macOS
+                                </button>
+                                <button class="os-button" data-os="linux" onclick="switchOS('linux')">
+                                    🐧 Linux
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- macOS Installation -->
+                        <div id="macos-content" class="os-content active">
+                            <div class="step-by-step">
+                                <h3>🍎 macOS Installation Guide</h3>
+                                
+                                <div class="install-step">
+                                    <div class="step-header">
+                                        <span class="step-number">1</span>
+                                        <h4>Install Prerequisites</h4>
+                                    </div>
+                                    <div class="step-content">
+                                        <p>First, make sure you have the required tools installed:</p>
+                                        
+                                        <div class="requirement">
+                                            <h5>📦 Homebrew (Package Manager)</h5>
+                                            <div class="code-block">
+                                                <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="requirement">
+                                            <h5>🟢 Node.js (for TypeScript/JavaScript servers)</h5>
+                                            <div class="code-block">
+                                                <code>brew install node</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                            <p class="note">This installs Node.js and npm package manager</p>
+                                        </div>
+
+                                        <div class="requirement">
+                                            <h5>🐍 Python (for Python servers)</h5>
+                                            <div class="code-block">
+                                                <code>brew install python</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                            <p class="note">Python 3.8+ is required for MCP servers</p>
+                                        </div>
+
+                                        <div class="verification">
+                                            <h5>✅ Verify Installation</h5>
+                                            <div class="code-block">
+                                                <code>node --version && python3 --version</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                            <p class="expected">Expected output: Node v18+ and Python 3.8+</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="install-step">
+                                    <div class="step-header">
+                                        <span class="step-number">2</span>
+                                        <h4>Install Claude Desktop</h4>
+                                    </div>
+                                    <div class="step-content">
+                                        <p>Claude Desktop is the easiest way to get started with MCP:</p>
+                                        
+                                        <div class="download-options">
+                                            <div class="download-method">
+                                                <h5>📥 Direct Download</h5>
+                                                <p>Download from the official website:</p>
+                                                <a href="https://claude.ai/download" class="download-link" target="_blank">
+                                                    Download Claude Desktop for macOS
+                                                </a>
+                                            </div>
+                                            
+                                            <div class="download-method">
+                                                <h5>🍺 Homebrew Cask</h5>
+                                                <div class="code-block">
+                                                    <code>brew install --cask claude</code>
+                                                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="setup-instructions">
+                                            <h5>⚙️ First Launch Setup</h5>
+                                            <ol>
+                                                <li>Open Claude Desktop from Applications</li>
+                                                <li>Sign in with your Anthropic account</li>
+                                                <li>Grant necessary permissions when prompted</li>
+                                                <li>Check that MCP is available in settings</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="install-step">
+                                    <div class="step-header">
+                                        <span class="step-number">3</span>
+                                        <h4>Set Up MCP Development Environment</h4>
+                                    </div>
+                                    <div class="step-content">
+                                        <p>Create a dedicated directory for your MCP projects:</p>
+                                        
+                                        <div class="code-block">
+                                            <code>mkdir ~/mcp-projects && cd ~/mcp-projects</code>
+                                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                        </div>
+
+                                        <div class="tool-installation">
+                                            <h5>🛠️ Install MCP Development Tools</h5>
+                                            
+                                            <div class="tool">
+                                                <h6>MCP Inspector (for testing)</h6>
+                                                <div class="code-block">
+                                                    <code>npm install -g @modelcontextprotocol/inspector</code>
+                                                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="tool">
+                                                <h6>FastMCP (for quick development)</h6>
+                                                <div class="code-block">
+                                                    <code>npm install -g @modelcontextprotocol/fastmcp</code>
+                                                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="install-step">
+                                    <div class="step-header">
+                                        <span class="step-number">4</span>
+                                        <h4>Configure Claude Desktop for MCP</h4>
+                                    </div>
+                                    <div class="step-content">
+                                        <p>Set up the configuration file for MCP servers:</p>
+                                        
+                                        <div class="config-location">
+                                            <h5>📁 Configuration File Location</h5>
+                                            <div class="code-block">
+                                                <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="config-creation">
+                                            <h5>📝 Create Configuration Directory</h5>
+                                            <div class="code-block">
+                                                <code>mkdir -p "~/Library/Application Support/Claude"</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="config-template">
+                                            <h5>⚙️ Basic Configuration Template</h5>
+                                            <div class="code-block">
+                                                <pre><code>{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "/path/to/allowed/directory"],
+      "env": {}
+    }
+  }
+}</code></pre>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                            <p class="note">Replace `/path/to/allowed/directory` with your actual directory path</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Linux Installation -->
+                        <div id="linux-content" class="os-content">
+                            <div class="step-by-step">
+                                <h3>🐧 Linux Installation Guide</h3>
+                                
+                                <div class="install-step">
+                                    <div class="step-header">
+                                        <span class="step-number">1</span>
+                                        <h4>Install Prerequisites</h4>
+                                    </div>
+                                    <div class="step-content">
+                                        <p>Install required packages based on your distribution:</p>
+                                        
+                                        <div class="distro-tabs">
+                                            <button class="distro-tab active" data-distro="ubuntu" onclick="switchDistro('ubuntu')">Ubuntu/Debian</button>
+                                            <button class="distro-tab" data-distro="fedora" onclick="switchDistro('fedora')">Fedora/RHEL</button>
+                                            <button class="distro-tab" data-distro="arch" onclick="switchDistro('arch')">Arch Linux</button>
+                                        </div>
+
+                                        <div id="ubuntu-commands" class="distro-content active">
+                                            <h5>📦 Ubuntu/Debian Commands</h5>
+                                            <div class="code-block">
+                                                <code>sudo apt update && sudo apt install curl git python3 python3-pip nodejs npm</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                        </div>
+
+                                        <div id="fedora-commands" class="distro-content">
+                                            <h5>📦 Fedora/RHEL Commands</h5>
+                                            <div class="code-block">
+                                                <code>sudo dnf install curl git python3 python3-pip nodejs npm</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                        </div>
+
+                                        <div id="arch-commands" class="distro-content">
+                                            <h5>📦 Arch Linux Commands</h5>
+                                            <div class="code-block">
+                                                <code>sudo pacman -S curl git python python-pip nodejs npm</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="verification">
+                                            <h5>✅ Verify Installation</h5>
+                                            <div class="code-block">
+                                                <code>node --version && python3 --version && pip3 --version</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="install-step">
+                                    <div class="step-header">
+                                        <span class="step-number">2</span>
+                                        <h4>Install MCP Client Options</h4>
+                                    </div>
+                                    <div class="step-content">
+                                        <p>Since Claude Desktop isn't natively available for Linux, here are alternative MCP clients:</p>
+                                        
+                                        <div class="client-options">
+                                            <div class="client-option">
+                                                <h5>🌐 Claude Web (Recommended for Beginners)</h5>
+                                                <p>Use Claude in your web browser with MCP support:</p>
+                                                <a href="https://claude.ai" class="download-link" target="_blank">
+                                                    Open Claude Web
+                                                </a>
+                                                <p class="note">Some MCP features may be limited in the web version</p>
+                                            </div>
+                                            
+                                            <div class="client-option">
+                                                <h5>⌨️ MCP CLI Client</h5>
+                                                <div class="code-block">
+                                                    <code>npm install -g @modelcontextprotocol/cli</code>
+                                                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                                </div>
+                                                <p class="note">Command-line interface for advanced users</p>
+                                            </div>
+
+                                            <div class="client-option">
+                                                <h5>🖥️ Custom Client Setup</h5>
+                                                <p>Build your own MCP client using the SDK:</p>
+                                                <div class="code-block">
+                                                    <code>npm install @modelcontextprotocol/sdk</code>
+                                                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="install-step">
+                                    <div class="step-header">
+                                        <span class="step-number">3</span>
+                                        <h4>Set Up Development Environment</h4>
+                                    </div>
+                                    <div class="step-content">
+                                        <p>Create your MCP development workspace:</p>
+                                        
+                                        <div class="code-block">
+                                            <code>mkdir ~/mcp-projects && cd ~/mcp-projects</code>
+                                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                        </div>
+
+                                        <div class="tool-installation">
+                                            <h5>🛠️ Install Development Tools</h5>
+                                            
+                                            <div class="tool">
+                                                <h6>MCP Inspector</h6>
+                                                <div class="code-block">
+                                                    <code>npm install -g @modelcontextprotocol/inspector</code>
+                                                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="tool">
+                                                <h6>MCP Development Server</h6>
+                                                <div class="code-block">
+                                                    <code>pip3 install mcp-server-dev</code>
+                                                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="install-step">
+                                    <div class="step-header">
+                                        <span class="step-number">4</span>
+                                        <h4>Configure MCP Environment</h4>
+                                    </div>
+                                    <div class="step-content">
+                                        <p>Set up configuration for your MCP environment:</p>
+                                        
+                                        <div class="config-creation">
+                                            <h5>📁 Create Configuration Directory</h5>
+                                            <div class="code-block">
+                                                <code>mkdir -p ~/.config/mcp</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="config-template">
+                                            <h5>⚙️ Basic MCP Configuration</h5>
+                                            <div class="code-block">
+                                                <pre><code>cat > ~/.config/mcp/config.json << 'EOF'
+{
+  "servers": {
+    "filesystem": {
+      "command": "mcp-server-filesystem",
+      "args": ["--root", "/home/$USER/mcp-data"],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  },
+  "logging": {
+    "level": "info"
+  }
+}
+EOF</code></pre>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="data-directory">
+                                            <h5>📂 Create Data Directory</h5>
+                                            <div class="code-block">
+                                                <code>mkdir -p ~/mcp-data</code>
+                                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="troubleshooting-section">
+                            <h3>🔧 Common Installation Issues</h3>
+                            <div class="issue-grid">
+                                <div class="issue-card">
+                                    <h4>❌ Permission Denied</h4>
+                                    <p><strong>Solution:</strong> Use sudo for system installations or configure user permissions</p>
+                                    <div class="code-block">
+                                        <code>sudo chown -R $USER:$USER ~/.npm</code>
+                                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                    </div>
+                                </div>
+                                <div class="issue-card">
+                                    <h4>❌ Node.js Version Too Old</h4>
+                                    <p><strong>Solution:</strong> Install Node Version Manager (nvm)</p>
+                                    <div class="code-block">
+                                        <code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash</code>
+                                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                    </div>
+                                </div>
+                                <div class="issue-card">
+                                    <h4>❌ Python Path Issues</h4>
+                                    <p><strong>Solution:</strong> Create symbolic link or use python3 explicitly</p>
+                                    <div class="code-block">
+                                        <code>alias python=python3</code>
+                                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="next-steps">
+                            <h3>🎉 Installation Complete!</h3>
+                            <p>Great! You now have MCP installed and configured. Let's create your first MCP connection.</p>
+                            <button class="next-button" onclick="navigateToSection('first-connection')">
+                                Next: Your First MCP Connection →
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Continue with other sections... -->
+                <!-- First Connection Section -->
+                <section id="first-connection" class="content-section">
+                    <div class="section-header">
+                        <h2>Your First MCP Connection</h2>
+                        <div class="section-meta">
+                            <span class="duration">⏱️ 25 minutes</span>
+                            <span class="difficulty beginner">🟢 Beginner</span>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <div class="intro-highlight">
+                            <h3>🚀 Let's Connect Your First MCP Server!</h3>
+                            <p>We'll start with a simple filesystem server that lets Claude access and work with your local files safely.</p>
+                        </div>
+                        <!-- Content continues... -->
+                        <div class="coming-soon">
+                            <h3>🔧 Section Under Development</h3>
+                            <p>This section is being expanded with detailed step-by-step instructions. Please check back soon!</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Add more sections as needed -->
+            </main>
+        </div>
+    </div>
+
+    <script src="tutorial-script.js"></script>
+</body>
+</html>
