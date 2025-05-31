@@ -4,7 +4,7 @@ A comprehensive web portal for the Model Context Protocol (MCP) ecosystem, featu
 
 ## 🌟 Features
 
-- **📊 109+ MCP Servers** - Comprehensive catalog of available MCP servers
+- **📊 109 MCP Servers** - Comprehensive catalog of available MCP servers
 - **🖥️ Multiple Client Types** - Desktop, mobile, web, and CLI clients
 - **🛠️ Development Tools** - Frameworks, testing tools, and templates
 - **📚 Educational Content** - Complete learning courses from beginner to advanced
@@ -122,7 +122,7 @@ docs/
 
 ## 📊 Statistics
 
-- **109+ MCP Servers** across 5 major categories
+- **109 MCP Servers** across 5 major categories
 - **25+ Clients** supporting all platforms
 - **15+ Development Tools** and frameworks
 - **10 Learning Courses** with 40+ hours of content
