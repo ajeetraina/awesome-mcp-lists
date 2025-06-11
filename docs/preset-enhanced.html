@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Toolkit - Enhanced with Presets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .tool-count {
+            background: #f0f4f8;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .content-area {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .preset-section h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .preset-item {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .preset-item:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .preset-item.active {
+            background: #667eea;
+            border-color: #667eea;
+            color: white;
+        }
+
+        .preset-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .preset-description {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .preset-stats {
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+
+        .preset-item.active .preset-description,
+        .preset-item.active .preset-stats {
+            opacity: 0.9;
+        }
+
+        .custom-presets {
+            margin-top: 25px;
+        }
+
+        .create-preset-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-bottom: 15px;
+        }
+
+        .create-preset-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .servers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .server-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0.6;
+        }
+
+        .server-card.active {
+            border-color: #48bb78;
+            opacity: 1;
+            box-shadow: 0 4px 20px rgba(72, 187, 120, 0.2);
+        }
+
+        .server-card.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .server-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .server-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #2d3748;
+        }
+
+        .server-toggle {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .server-card.active .server-toggle {
+            background: #48bb78;
+            border-color: #48bb78;
+            color: white;
+        }
+
+        .server-description {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .server-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            background: #f0f4f8;
+            color: #667eea;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .server-tools {
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            border-color: #667eea;
+            color: white;
+        }
+
+        .preset-manager {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .preset-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .current-preset-info {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .current-preset-name {
+            font-weight: 600;
+            color: #0369a1;
+            margin-bottom: 5px;
+        }
+
+        .current-preset-stats {
+            color: #0369a1;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+
+            .servers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .preset-controls {
+                flex-direction: column;
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: -10px;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">MCP</div>
+            <h1>MCP Toolkit with Presets</h1>
+            <p class="tagline">Organize your MCP servers into focused presets for different workflows</p>
+            <div class="tool-count" id="toolCount">0 tools active in current preset</div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <div class="preset-section">
+                    <h3>🎯 Built-in Presets</h3>
+                    <div class="preset-item active" data-preset="architect">
+                        <div class="preset-name">🏗️ Architect</div>
+                        <div class="preset-description">Focused on system design and planning</div>
+                        <div class="preset-stats">5 servers • 23 tools</div>
+                    </div>
+                    <div class="preset-item" data-preset="azure-dev">
+                        <div class="preset-name">☁️ Azure Developer</div>
+                        <div class="preset-description">Azure cloud development workflow</div>
+                        <div class="preset-stats">4 servers • 31 tools</div>
+                    </div>
+                    <div class="preset-item" data-preset="data-analyst">
+                        <div class="preset-name">📊 Data Analyst</div>
+                        <div class="preset-description">Data processing and analysis tools</div>
+                        <div class="preset-stats">6 servers • 28 tools</div>
+                    </div>
+                    <div class="preset-item" data-preset="full-stack">
+                        <div class="preset-name">🚀 Full Stack</div>
+                        <div class="preset-description">Complete web development toolkit</div>
+                        <div class="preset-stats">8 servers • 45 tools</div>
+                    </div>
+                    <div class="preset-item" data-preset="minimal">
+                        <div class="preset-name">⚡ Minimal</div>
+                        <div class="preset-description">Essential tools for basic tasks</div>
+                        <div class="preset-stats">3 servers • 12 tools</div>
+                    </div>
+                </div>
+
+                <div class="custom-presets">
+                    <h3>👤 Your Presets</h3>
+                    <button class="create-preset-btn" onclick="openCreatePresetModal()">+ Create New Preset</button>
+                    <div id="customPresets">
+                        <!-- Custom presets will be added here -->
+                    </div>
+                </div>
+            </aside>
+
+            <main class="content-area">
+                <div class="preset-manager">
+                    <div class="current-preset-info">
+                        <div class="current-preset-name" id="currentPresetName">Architect Preset</div>
+                        <div class="current-preset-stats" id="currentPresetStats">5 servers active • 23 tools • Under 60 tool limit ✓</div>
+                    </div>
+                    
+                    <div class="preset-controls">
+                        <button class="btn btn-primary" onclick="exportPreset()">📤 Export Preset</button>
+                        <button class="btn btn-secondary" onclick="importPreset()">📥 Import Preset</button>
+                        <button class="btn btn-secondary" onclick="saveChanges()">💾 Save Changes</button>
+                        <button class="btn btn-secondary" onclick="resetPreset()">🔄 Reset to Default</button>
+                    </div>
+                </div>
+
+                <input type="text" class="search-bar" placeholder="Search MCP servers..." id="searchBar">
+                
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="development">Development</button>
+                    <button class="filter-btn" data-filter="data">Data</button>
+                    <button class="filter-btn" data-filter="cloud">Cloud</button>
+                    <button class="filter-btn" data-filter="productivity">Productivity</button>
+                    <button class="filter-btn" data-filter="ai">AI/ML</button>
+                </div>
+
+                <div class="servers-grid" id="serversGrid">
+                    <!-- Servers will be populated here -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Create Preset Modal -->
+    <div id="createPresetModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCreatePresetModal()">&times;</span>
+            <h3>Create New Preset</h3>
+            <form id="createPresetForm">
+                <div class="form-group">
+                    <label for="presetName">Preset Name</label>
+                    <input type="text" id="presetName" required placeholder="e.g., Backend Developer">
+                </div>
+                <div class="form-group">
+                    <label for="presetDescription">Description</label>
+                    <textarea id="presetDescription" placeholder="Brief description of this preset's purpose"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="presetIcon">Icon (emoji)</label>
+                    <input type="text" id="presetIcon" placeholder="🔧" maxlength="2">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeCreatePresetModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Preset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Sample MCP servers data
+        const mcpServers = [
+            {
+                id: 'sequential-thinking',
+                name: 'Sequential Thinking',
+                description: 'Advanced reasoning and step-by-step problem solving capabilities',
+                category: 'ai',
+                tags: ['reasoning', 'ai', 'thinking'],
+                tools: 8,
+                presets: ['architect', 'data-analyst']
+            },
+            {
+                id: 'memory',
+                name: 'Memory',
+                description: 'Persistent context and conversation memory management',
+                category: 'productivity',
+                tags: ['memory', 'context', 'persistence'],
+                tools: 6,
+                presets: ['architect', 'full-stack']
+            },
+            {
+                id: 'atlassian',
+                name: 'Atlassian',
+                description: 'Jira, Confluence, and Bitbucket integration for project management',
+                category: 'productivity',
+                tags: ['jira', 'confluence', 'project-management'],
+                tools: 12,
+                presets: ['architect', 'full-stack']
+            },
+            {
+                id: 'context7',
+                name: 'Context7',
+                description: 'Advanced context awareness and multi-turn conversation handling',
+                category: 'ai',
+                tags: ['context', 'conversation', 'ai'],
+                tools: 5,
+                presets: ['azure-dev', 'full-stack']
+            },
+            {
+                id: 'azure',
+                name: 'Azure',
+                description: 'Microsoft Azure cloud services integration and management',
+                category: 'cloud',
+                tags: ['azure', 'cloud', 'microsoft'],
+                tools: 15,
+                presets: ['azure-dev', 'full-stack']
+            },
+            {
+                id: 'gordon',
+                name: 'Gordon',
+                description: 'AI assistant with enhanced capabilities for development tasks',
+                category: 'ai',
+                tags: ['assistant', 'development', 'ai'],
+                tools: 10,
+                presets: ['azure-dev', 'full-stack']
+            },
+            {
+                id: 'github',
+                name: 'GitHub',
+                description: 'Git repository management, issues, and pull requests',
+                category: 'development',
+                tags: ['git', 'github', 'version-control'],
+                tools: 18,
+                presets: ['full-stack', 'data-analyst']
+            },
+            {
+                id: 'database',
+                name: 'Database Tools',
+                description: 'Multi-database support for PostgreSQL, MySQL, MongoDB',
+                category: 'data',
+                tags: ['database', 'sql', 'mongodb'],
+                tools: 14,
+                presets: ['data-analyst', 'full-stack']
+            },
+            {
+                id: 'filesystem',
+                name: 'Filesystem',
+                description: 'File operations, directory management, and file processing',
+                category: 'development',
+                tags: ['files', 'filesystem', 'io'],
+                tools: 9,
+                presets: ['minimal', 'full-stack', 'data-analyst']
+            },
+            {
+                id: 'time',
+                name: 'Time & Scheduling',
+                description: 'Date/time operations, scheduling, and calendar integration',
+                category: 'productivity',
+                tags: ['time', 'calendar', 'scheduling'],
+                tools: 7,
+                presets: ['minimal', 'architect']
+            },
+            {
+                id: 'fetch',
+                name: 'Web Fetch',
+                description: 'HTTP requests, web scraping, and API interactions',
+                category: 'development',
+                tags: ['http', 'api', 'web'],
+                tools: 5,
+                presets: ['minimal', 'full-stack', 'data-analyst']
+            },
+            {
+                id: 'puppeteer',
+                name: 'Puppeteer',
+                description: 'Browser automation, screenshots, and web testing',
+                category: 'development',
+                tags: ['browser', 'automation', 'testing'],
+                tools: 11,
+                presets: ['full-stack']
+            }
+        ];
+
+        // Preset definitions
+        const presetDefinitions = {
+            'architect': {
+                name: '🏗️ Architect',
+                description: 'Focused on system design and planning',
+                servers: ['sequential-thinking', 'memory', 'atlassian', 'time', 'github']
+            },
+            'azure-dev': {
+                name: '☁️ Azure Developer',
+                description: 'Azure cloud development workflow',
+                servers: ['context7', 'azure', 'gordon', 'github']
+            },
+            'data-analyst': {
+                name: '📊 Data Analyst',
+                description: 'Data processing and analysis tools',
+                servers: ['sequential-thinking', 'database', 'filesystem', 'fetch', 'github', 'puppeteer']
+            },
+            'full-stack': {
+                name: '🚀 Full Stack',
+                description: 'Complete web development toolkit',
+                servers: ['memory', 'atlassian', 'context7', 'azure', 'gordon', 'github', 'database', 'filesystem']
+            },
+            'minimal': {
+                name: '⚡ Minimal',
+                description: 'Essential tools for basic tasks',
+                servers: ['filesystem', 'time', 'fetch']
+            }
+        };
+
+        let currentPreset = 'architect';
+        let customPresets = JSON.parse(localStorage.getItem('mcpCustomPresets') || '{}');
+
+        function initializeApp() {
+            renderServers();
+            updatePresetInfo();
+            setupEventListeners();
+            loadCustomPresets();
+        }
+
+        function renderServers() {
+            const grid = document.getElementById('serversGrid');
+            const activeServers = presetDefinitions[currentPreset]?.servers || [];
+            
+            grid.innerHTML = mcpServers.map(server => {
+                const isActive = activeServers.includes(server.id);
+                return `
+                    <div class="server-card ${isActive ? 'active' : ''}" data-server="${server.id}">
+                        <div class="server-header">
+                            <div class="server-name">${server.name}</div>
+                            <div class="server-toggle" onclick="toggleServer('${server.id}')">
+                                ${isActive ? '✓' : ''}
+                            </div>
+                        </div>
+                        <div class="server-description">${server.description}</div>
+                        <div class="server-tags">
+                            ${server.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="server-tools">${server.tools} tools available</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleServer(serverId) {
+            const activeServers = presetDefinitions[currentPreset]?.servers || [];
+            const serverIndex = activeServers.indexOf(serverId);
+            
+            if (serverIndex > -1) {
+                activeServers.splice(serverIndex, 1);
+            } else {
+                activeServers.push(serverId);
+            }
+            
+            renderServers();
+            updatePresetInfo();
+        }
+
+        function updatePresetInfo() {
+            const preset = presetDefinitions[currentPreset];
+            const activeServers = preset?.servers || [];
+            const totalTools = activeServers.reduce((sum, serverId) => {
+                const server = mcpServers.find(s => s.id === serverId);
+                return sum + (server?.tools || 0);
+            }, 0);
+
+            document.getElementById('currentPresetName').textContent = preset?.name || 'Custom Preset';
+            
+            const warning = totalTools > 60 ? ' ⚠️ Over recommended limit' : ' ✓';
+            const vscodeWarning = totalTools > 128 ? ' 🚨 VSCode limit exceeded' : '';
+            
+            document.getElementById('currentPresetStats').textContent = 
+                `${activeServers.length} servers active • ${totalTools} tools${warning}${vscodeWarning}`;
+            
+            document.getElementById('toolCount').textContent = 
+                `${totalTools} tools active in current preset`;
+        }
+
+        function switchPreset(presetId) {
+            // Remove active class from all preset items
+            document.querySelectorAll('.preset-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to selected preset
+            const selectedPreset = document.querySelector(`[data-preset="${presetId}"]`);
+            if (selectedPreset) {
+                selectedPreset.classList.add('active');
+            }
+            
+            currentPreset = presetId;
+            renderServers();
+            updatePresetInfo();
+        }
+
+        function setupEventListeners() {
+            // Preset switching
+            document.querySelectorAll('.preset-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const presetId = item.dataset.preset;
+                    switchPreset(presetId);
+                });
+            });
+
+            // Search functionality
+            document.getElementById('searchBar').addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                filterServers(searchTerm);
+            });
+
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    filterServersByCategory(filter);
+                });
+            });
+        }
+
+        function filterServers(searchTerm) {
+            document.querySelectorAll('.server-card').forEach(card => {
+                const serverName = card.querySelector('.server-name').textContent.toLowerCase();
+                const serverDesc = card.querySelector('.server-description').textContent.toLowerCase();
+                const serverTags = card.querySelector('.server-tags').textContent.toLowerCase();
+                
+                if (serverName.includes(searchTerm) || 
+                    serverDesc.includes(searchTerm) || 
+                    serverTags.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterServersByCategory(category) {
+            document.querySelectorAll('.server-card').forEach(card => {
+                const serverId = card.dataset.server;
+                const server = mcpServers.find(s => s.id === serverId);
+                
+                if (category === 'all' || server.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openCreatePresetModal() {
+            document.getElementById('createPresetModal').style.display = 'block';
+        }
+
+        function closeCreatePresetModal() {
+            document.getElementById('createPresetModal').style.display = 'none';
+            document.getElementById('createPresetForm').reset();
+        }
+
+        function loadCustomPresets() {
+            const container = document.getElementById('customPresets');
+            
+            Object.entries(customPresets).forEach(([id, preset]) => {
+                const presetElement = document.createElement('div');
+                presetElement.className = 'preset-item';
+                presetElement.dataset.preset = id;
+                presetElement.innerHTML = `
+                    <div class="preset-name">${preset.icon} ${preset.name}</div>
+                    <div class="preset-description">${preset.description}</div>
+                    <div class="preset-stats">${preset.servers.length} servers • ${calculateTotalTools(preset.servers)} tools</div>
+                `;
+                
+                presetElement.addEventListener('click', () => switchPreset(id));
+                container.appendChild(presetElement);
+            });
+        }
+
+        function calculateTotalTools(serverIds) {
+            return serverIds.reduce((sum, serverId) => {
+                const server = mcpServers.find(s => s.id === serverId);
+                return sum + (server?.tools || 0);
+            }, 0);
+        }
+
+        // Preset management functions
+        function exportPreset() {
+            const preset = presetDefinitions[currentPreset];
+            const exportData = {
+                name: preset.name,
+                description: preset.description,
+                servers: preset.servers,
+                exportedAt: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], {
+                type: 'application/json'
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `mcp-preset-${currentPreset}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function importPreset() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const presetData = JSON.parse(e.target.result);
+                            // Add imported preset to custom presets
+                            const presetId = 'custom-' + Date.now();
+                            customPresets[presetId] = presetData;
+                            localStorage.setItem('mcpCustomPresets', JSON.stringify(customPresets));
+                            loadCustomPresets();
+                            alert('Preset imported successfully!');
+                        } catch (error) {
+                            alert('Error importing preset: ' + error.message);
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            });
+            
+            input.click();
+        }
+
+        function saveChanges() {
+            // Save current configuration
+            localStorage.setItem('mcpCurrentPreset', currentPreset);
+            localStorage.setItem('mcpPresetConfig', JSON.stringify(presetDefinitions));
+            alert('Changes saved successfully!');
+        }
+
+        function resetPreset() {
+            if (confirm('Reset preset to default configuration?')) {
+                location.reload();
+            }
+        }
+
+        // Form submission for creating new preset
+        document.getElementById('createPresetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('presetName').value;
+            const description = document.getElementById('presetDescription').value;
+            const icon = document.getElementById('presetIcon').value || '🔧';
+            
+            const presetId = 'custom-' + Date.now();
+            
+            customPresets[presetId] = {
+                name: name,
+                description: description,
+                icon: icon,
+                servers: [] // Start with empty server list
+            };
+            
+            presetDefinitions[presetId] = {
+                name: `${icon} ${name}`,
+                description: description,
+                servers: []
+            };
+            
+            localStorage.setItem('mcpCustomPresets', JSON.stringify(customPresets));
+            
+            closeCreatePresetModal();
+            loadCustomPresets();
+            switchPreset(presetId);
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('createPresetModal');
+            if (e.target === modal) {
+                closeCreatePresetModal();
+            }
+        });
+
+        // Initialize the app
+        initializeApp();
+    </script>
+</body>
+</html>
