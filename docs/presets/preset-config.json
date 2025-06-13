@@ -1,0 +1,446 @@
+{
+  "presets": {
+    "architect": {
+      "id": "architect",
+      "name": "🏗️ Architect",
+      "description": "System design, planning, and architectural decision making",
+      "icon": "🏗️",
+      "maxTools": 60,
+      "priority": "high",
+      "servers": [
+        {
+          "id": "sequential-thinking",
+          "name": "Sequential Thinking",
+          "required": true,
+          "tools": 8,
+          "config": {
+            "reasoning_depth": "advanced",
+            "step_validation": true,
+            "architectural_patterns": true
+          }
+        },
+        {
+          "id": "memory",
+          "name": "Memory",
+          "required": true,
+          "tools": 6,
+          "config": {
+            "retention_period": "30d",
+            "context_size": "large",
+            "decision_tracking": true
+          }
+        },
+        {
+          "id": "atlassian",
+          "name": "Atlassian",
+          "required": false,
+          "tools": 12,
+          "config": {
+            "default_project": "ARCH",
+            "auto_link_issues": true,
+            "confluence_integration": true
+          }
+        }
+      ],
+      "totalTools": 26,
+      "tags": ["architecture", "design", "planning"],
+      "toolLimits": {
+        "warningThreshold": 50,
+        "hardLimit": 60
+      }
+    },
+    
+    "azure-dev": {
+      "id": "azure-dev",
+      "name": "☁️ Azure Developer",
+      "description": "Azure cloud development and DevOps workflows",
+      "icon": "☁️",
+      "maxTools": 60,
+      "priority": "high",
+      "servers": [
+        {
+          "id": "context7",
+          "name": "Context7",
+          "required": true,
+          "tools": 5,
+          "config": {
+            "azure_context": true,
+            "deployment_awareness": true,
+            "resource_tracking": true
+          }
+        },
+        {
+          "id": "azure",
+          "name": "Azure",
+          "required": true,
+          "tools": 15,
+          "config": {
+            "subscription_id": "${AZURE_SUBSCRIPTION_ID}",
+            "resource_groups": ["dev", "staging", "prod"],
+            "auto_scaling": true
+          }
+        },
+        {
+          "id": "gordon",
+          "name": "Gordon",
+          "required": true,
+          "tools": 10,
+          "config": {
+            "azure_integration": true,
+            "devops_mode": true,
+            "terraform_support": true
+          }
+        }
+      ],
+      "totalTools": 30,
+      "tags": ["azure", "cloud", "devops"],
+      "toolLimits": {
+        "warningThreshold": 50,
+        "hardLimit": 60
+      }
+    },
+
+    "data-analyst": {
+      "id": "data-analyst",
+      "name": "📊 Data Analyst",
+      "description": "Data processing, analysis, and visualization tools",
+      "icon": "📊",
+      "maxTools": 60,
+      "priority": "medium",
+      "servers": [
+        {
+          "id": "sequential-thinking",
+          "name": "Sequential Thinking",
+          "required": true,
+          "tools": 8,
+          "config": {
+            "statistical_reasoning": true,
+            "data_validation": true,
+            "hypothesis_testing": true
+          }
+        },
+        {
+          "id": "database",
+          "name": "Database Tools",
+          "required": true,
+          "tools": 14,
+          "config": {
+            "postgres_enabled": true,
+            "mysql_enabled": true,
+            "mongodb_enabled": true,
+            "query_optimization": true
+          }
+        },
+        {
+          "id": "filesystem",
+          "name": "Filesystem",
+          "required": true,
+          "tools": 9,
+          "config": {
+            "csv_processing": true,
+            "json_handling": true,
+            "file_conversion": true
+          }
+        },
+        {
+          "id": "fetch",
+          "name": "Web Fetch",
+          "required": false,
+          "tools": 5,
+          "config": {
+            "api_integration": true,
+            "data_scraping": true,
+            "rate_limiting": true
+          }
+        }
+      ],
+      "totalTools": 36,
+      "tags": ["data", "analytics", "database"],
+      "toolLimits": {
+        "warningThreshold": 50,
+        "hardLimit": 60
+      }
+    },
+
+    "minimal": {
+      "id": "minimal",
+      "name": "⚡ Minimal",
+      "description": "Essential tools for basic tasks and quick interactions",
+      "icon": "⚡",
+      "maxTools": 30,
+      "priority": "low",
+      "servers": [
+        {
+          "id": "filesystem",
+          "name": "Filesystem",
+          "required": true,
+          "tools": 9,
+          "config": {
+            "basic_operations": true,
+            "read_write": true
+          }
+        },
+        {
+          "id": "time",
+          "name": "Time & Scheduling",
+          "required": true,
+          "tools": 7,
+          "config": {
+            "timezone_support": true,
+            "basic_scheduling": true
+          }
+        },
+        {
+          "id": "fetch",
+          "name": "Web Fetch",
+          "required": false,
+          "tools": 5,
+          "config": {
+            "simple_requests": true,
+            "basic_auth": true
+          }
+        }
+      ],
+      "totalTools": 21,
+      "tags": ["minimal", "basic", "essential"],
+      "toolLimits": {
+        "warningThreshold": 25,
+        "hardLimit": 30
+      }
+    },
+
+    "full-stack": {
+      "id": "full-stack",
+      "name": "🚀 Full Stack",
+      "description": "Complete web development toolkit for frontend and backend",
+      "icon": "🚀",
+      "maxTools": 80,
+      "priority": "high",
+      "servers": [
+        {
+          "id": "memory",
+          "name": "Memory",
+          "required": true,
+          "tools": 6,
+          "config": {
+            "session_management": true,
+            "user_context": true
+          }
+        },
+        {
+          "id": "atlassian",
+          "name": "Atlassian",
+          "required": false,
+          "tools": 12,
+          "config": {
+            "agile_workflow": true,
+            "sprint_tracking": true
+          }
+        },
+        {
+          "id": "github",
+          "name": "GitHub",
+          "required": true,
+          "tools": 18,
+          "config": {
+            "repo_management": true,
+            "pr_automation": true,
+            "ci_cd_integration": true
+          }
+        },
+        {
+          "id": "database",
+          "name": "Database Tools",
+          "required": true,
+          "tools": 14,
+          "config": {
+            "orm_support": true,
+            "migration_tools": true,
+            "backup_restore": true
+          }
+        },
+        {
+          "id": "filesystem",
+          "name": "Filesystem",
+          "required": true,
+          "tools": 9,
+          "config": {
+            "asset_management": true,
+            "build_tools": true
+          }
+        }
+      ],
+      "totalTools": 59,
+      "tags": ["fullstack", "web", "development"],
+      "toolLimits": {
+        "warningThreshold": 70,
+        "hardLimit": 80
+      }
+    }
+  },
+
+  "serverDefinitions": {
+    "sequential-thinking": {
+      "name": "Sequential Thinking",
+      "description": "Advanced reasoning and step-by-step problem solving",
+      "category": "ai",
+      "image": "mcp/sequential-thinking:latest",
+      "ports": ["8001:8000"],
+      "environment": [
+        "REASONING_DEPTH=advanced",
+        "VALIDATION_ENABLED=true"
+      ],
+      "tools": [
+        "think_step_by_step",
+        "validate_reasoning",
+        "break_down_problem",
+        "synthesize_solution",
+        "check_assumptions",
+        "evaluate_alternatives",
+        "trace_logic",
+        "verify_conclusion"
+      ]
+    },
+    
+    "memory": {
+      "name": "Memory",
+      "description": "Persistent context and conversation memory management",
+      "category": "productivity",
+      "image": "mcp/memory:latest",
+      "ports": ["8002:8000"],
+      "volumes": ["./data/memory:/app/data"],
+      "environment": [
+        "RETENTION_PERIOD=30d",
+        "MAX_CONTEXT_SIZE=10000"
+      ],
+      "tools": [
+        "store_context",
+        "retrieve_context",
+        "search_memory",
+        "forget_context",
+        "summarize_conversation",
+        "track_decisions"
+      ]
+    },
+
+    "atlassian": {
+      "name": "Atlassian",
+      "description": "Jira, Confluence, and Bitbucket integration",
+      "category": "productivity",
+      "image": "mcp/atlassian:latest",
+      "ports": ["8003:8000"],
+      "environment": [
+        "ATLASSIAN_URL=${ATLASSIAN_URL}",
+        "ATLASSIAN_TOKEN=${ATLASSIAN_TOKEN}",
+        "DEFAULT_PROJECT=ARCH"
+      ],
+      "tools": [
+        "create_jira_issue",
+        "update_jira_issue",
+        "search_jira_issues",
+        "create_confluence_page",
+        "update_confluence_page",
+        "search_confluence",
+        "list_projects",
+        "get_project_info",
+        "create_epic",
+        "link_issues",
+        "add_comment",
+        "transition_issue"
+      ]
+    },
+
+    "context7": {
+      "name": "Context7",
+      "description": "Advanced context awareness and multi-turn conversation handling",
+      "category": "ai",
+      "image": "mcp/context7:latest",
+      "ports": ["8004:8000"],
+      "environment": [
+        "CONTEXT_WINDOW=7000",
+        "AZURE_INTEGRATION=true"
+      ],
+      "tools": [
+        "maintain_context",
+        "context_summary",
+        "detect_context_shift",
+        "merge_contexts",
+        "context_relevance"
+      ]
+    },
+
+    "azure": {
+      "name": "Azure",
+      "description": "Microsoft Azure cloud services integration",
+      "category": "cloud",
+      "image": "mcp/azure:latest",
+      "ports": ["8005:8000"],
+      "environment": [
+        "AZURE_SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}",
+        "AZURE_CLIENT_ID=${AZURE_CLIENT_ID}",
+        "AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}",
+        "AZURE_TENANT_ID=${AZURE_TENANT_ID}"
+      ],
+      "tools": [
+        "list_resource_groups",
+        "create_resource_group",
+        "list_vms",
+        "create_vm",
+        "start_vm",
+        "stop_vm",
+        "list_storage_accounts",
+        "create_storage_account",
+        "list_databases",
+        "create_database",
+        "deploy_arm_template",
+        "get_subscription_info",
+        "list_locations",
+        "get_pricing",
+        "monitor_resources"
+      ]
+    },
+
+    "gordon": {
+      "name": "Gordon",
+      "description": "AI assistant with enhanced development capabilities",
+      "category": "ai",
+      "image": "mcp/gordon:latest",
+      "ports": ["8006:8000"],
+      "environment": [
+        "GORDON_MODE=development",
+        "AZURE_INTEGRATION=true",
+        "DEVOPS_ENABLED=true"
+      ],
+      "tools": [
+        "code_review",
+        "generate_code",
+        "debug_code",
+        "optimize_code",
+        "write_tests",
+        "document_code",
+        "refactor_code",
+        "analyze_performance",
+        "security_scan",
+        "deploy_application"
+      ]
+    }
+  },
+
+  "globalSettings": {
+    "maxActiveServers": 10,
+    "toolCountWarning": 50,
+    "toolCountLimit": 128,
+    "vscodeOptimal": 60,
+    "autoSavePresets": true,
+    "presetSwitchDelay": 2000,
+    "healthCheckInterval": 30000
+  },
+
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2024-12-20",
+    "lastUpdated": "2024-12-20",
+    "author": "MCP Community",
+    "description": "Preset configuration for MCP Toolkit with tool count management"
+  }
+}
