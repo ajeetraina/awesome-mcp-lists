@@ -1,4 +1,4 @@
-# A Curated List of MCP Servers, Clients and Toolkits
+# A Curated List of containerised MCP Servers, Clients and Toolkits
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![GitHub stars](https://img.shields.io/github/stars/collabnix/awesome-mcp-lists.svg)](https://github.com/collabnix/awesome-mcp-lists/stargazers)
@@ -8,7 +8,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/collabnix/awesome-mcp-lists/pulls)
 [![Docker MCP](https://img.shields.io/badge/Docker-MCP-blue)](https://www.docker.com/)
 
-A comprehensive curated list of MCP Servers, Clients and toolkits.
+A comprehensive curated list of containerised MCP Servers, Clients and toolkits.
 
 ## Table of Contents
 - [MCP Servers](#mcp-servers)
