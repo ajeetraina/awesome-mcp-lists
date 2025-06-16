@@ -49,6 +49,11 @@ MCP servers for managing infrastructure, containers, and DevOps workflows.
 | 3 | kubernetes | Orchestrate and manage containerized applications with Kubernetes | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/kubernetes.md) |
 | 4 | gitlab | Interact with GitLab repositories and CI/CD pipelines | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/gitlab.md) |
 | 5 | circleci | Manage CI/CD pipelines and workflows in CircleCI | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/circleci.md) |
+| 6 | **AWS Comprehensive** | Complete AWS service integration suite (20+ services) | TBD | [AWS Labs](https://github.com/awslabs/mcp) |
+| 7 | **Terraform** | Infrastructure as Code management | TBD | [Docker Hub](https://hub.docker.com/r/hashicorp/terraform-mcp-server) |
+| 8 | pulumi | Infrastructure as code platform | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/pulumi.md) |
+| 9 | heroku | Cloud platform as a service (PaaS) | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/heroku.md) |
+| 10 | jetbrains | Integrate with JetBrains IDEs and tools | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/jetbrains.md) |
 
 ### Database & Storage
 
@@ -57,10 +62,15 @@ MCP servers for accessing and managing databases and storage solutions.
 | # | MCP Server | Description | Docker Hub Pulls | Link |
 |---|------------|-------------|------------------|------|
 | 1 | postgres | Interact with PostgreSQL databases | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/postgres.md) |
-| 2 | redis | Interact with Redis in-memory data structure store | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/redis.md) |
-| 3 | elasticsearch | Search, analyze, and visualize data with Elasticsearch | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/elasticsearch.md) |
-| 4 | chroma | Interact with Chroma vector database for embeddings and retrieval | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/chroma.md) |
-| 5 | neo4j-server | Graph database server management | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/neo4j-server.md) |
+| 2 | **MongoDB** | MongoDB database integration | TBD | [Docker Hub](https://hub.docker.com/r/mongodb/mongodb-mcp-server) |
+| 3 | redis | Interact with Redis in-memory data structure store | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/redis.md) |
+| 4 | elasticsearch | Search, analyze, and visualize data with Elasticsearch | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/elasticsearch.md) |
+| 5 | chroma | Interact with Chroma vector database for embeddings and retrieval | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/chroma.md) |
+| 6 | neo4j-server | Graph database server management | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/neo4j-server.md) |
+| 7 | astra-db | Interact with DataStax Astra DB, a cloud-native Cassandra database | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/astra-db.md) |
+| 8 | neon | Serverless PostgreSQL database service | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/neon.md) |
+| 9 | **Supabase** | Open source Firebase alternative | TBD | [GitHub](https://github.com/supabase/mcp-server-supabase) |
+| 10 | tembo | Enhanced PostgreSQL database platform | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/tembo.md) |
 
 ### Web & Content
 
@@ -85,6 +95,11 @@ MCP servers for accessing external services and APIs.
 | 3 | atlassian | Integrate with Atlassian products like Jira and Confluence | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/atlassian.md) |
 | 4 | azure | Interact with Microsoft Azure cloud services and resources | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/azure.md) |
 | 5 | google-maps | Geographic information and location services | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/google-maps.md) |
+| 6 | slack | Send and receive messages in Slack workspaces | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/slack.md) |
+| 7 | gdrive | Access and manage files in Google Drive | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/gdrive.md) |
+| 8 | box | Manage files and folders in Box cloud storage | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/box.md) |
+| 9 | razorpay | Payment gateway and financial services platform | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/razorpay.md) |
+| 10 | resend | Email delivery and management service | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/resend.md) |
 
 ### AI & Machine Learning
 
@@ -97,6 +112,9 @@ MCP servers for AI and machine learning capabilities.
 | 3 | elevenlabs | AI voice generation and text-to-speech | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/elevenlabs.md) |
 | 4 | wolfram-alpha | Computational knowledge engine | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/wolfram-alpha.md) |
 | 5 | everart | AI art generation and manipulation | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/everart.md) |
+| 6 | **OpenAI Compatible** | Any OpenAI SDK compatible API | TBD | [GitHub](https://github.com/imbactbulletz/any-chat-completions-mcp) |
+| 7 | **Amazon Bedrock** | AWS AI services integration | TBD | [AWS Labs](https://github.com/awslabs/mcp) |
+| 8 | **Amazon Nova Canvas** | AI image generation platform | TBD | [AWS Labs](https://github.com/awslabs/mcp) |
 
 ## MCP Clients
 
@@ -104,11 +122,13 @@ MCP servers for AI and machine learning capabilities.
 
 | # | Client Name | Description | Platforms |
 |---|-------------|-------------|-----------|
-| 1 | Claude Desktop | Official Claude client with MCP support | Windows, macOS |
-| 2 | Cursor AI | Code editor with AI assistant and MCP support | Windows, macOS, Linux |
-| 3 | Windsurf | AI browser with MCP integration | macOS |
-| 4 | Cline | Terminal-based chat client with MCP support | Windows, macOS, Linux |
-| 5 | MetaMCP | Unified middleware MCP client | Windows, macOS, Linux |
+| 1 | **Claude Desktop** | Official Claude client with native MCP support | Windows, macOS |
+| 2 | **Cursor AI** | AI-powered code editor with MCP support | Windows, macOS, Linux |
+| 3 | **Windsurf** | AI browser with MCP integration | macOS |
+| 4 | **Cline** | Terminal-based chat client with MCP support | Windows, macOS, Linux |
+| 5 | **MetaMCP** | Unified middleware MCP client | Windows, macOS, Linux |
+| 6 | **Continue.dev** | AI coding assistant for IDEs | VS Code, JetBrains |
+
 
 ### Mobile Applications
 
@@ -336,6 +356,55 @@ There are currently 109 MCP servers available:
 | 107 | github | Manage GitHub repositories and perform Git operations | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/github.md) |
 | 108 | kubernetes | Orchestrate and manage containerized applications | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/kubernetes.md) |
 | 109 | postgresql | Interact with PostgreSQL databases | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/postgresql.md) |
+
+### Security & Authentication
+
+| # | MCP Server | Description | Docker Hub Pulls | Link |
+|---|------------|-------------|------------------|------|
+| 1 | sentry | Monitor application errors and performance | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/sentry.md) |
+| 2 | cyreslab-ai-shodan | Search for internet-connected devices using Shodan | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/cyreslab-ai-shodan.md) |
+| 3 | descope | Implement secure user authentication and authorization | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/descope.md) |
+| 4 | armor-crypto | Secure encryption and decryption tools for sensitive data | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/armor-crypto.md) |
+| 5 | **VirusTotal** | File and URL security analysis | TBD | [GitHub](https://github.com/skydeckai/virustotal-mcp-server) |
+| 6 | risken | Security risk management platform | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/risken.md) |
+
+### Development Tools
+
+| # | MCP Server | Description | Docker Hub Pulls | Link |
+|---|------------|-------------|------------------|------|
+| 1 | filesystem | Interact with file system and perform file operations | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/filesystem.md) |
+| 2 | e2b | Cloud-based development environment | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/e2b.md) |
+| 3 | octomind | Automated testing and quality assurance platform | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/octomind.md) |
+| 4 | openapi-schema | API definition and documentation standard | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/openapi-schema.md) |
+| 5 | desktop-commander | Control desktop applications and perform system operations | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/desktop-commander.md) |
+
+### Communication
+
+| # | MCP Server | Description | Docker Hub Pulls | Link |
+|---|------------|-------------|------------------|------|
+| 1 | mcp-discord | Discord messaging and community management | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/mcp-discord.md) |
+| 2 | line | Messaging application and platform integration | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/line.md) |
+| 3 | tweetbinder | Twitter/X analytics and social media insights | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/tweetbinder.md) |
+
+### Knowledge Management
+
+| # | MCP Server | Description | Docker Hub Pulls | Link |
+|---|------------|-------------|------------------|------|
+| 1 | obsidian | Work with Obsidian notes and knowledge management | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/obsidian.md) |
+| 2 | fibery | Connected work platform for knowledge management | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/fibery.md) |
+| 3 | context7 | Provide contextual information for enhanced AI conversations | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/context7.md) |
+| 4 | atlas-docs | Access MongoDB Atlas documentation and best practices | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/atlas-docs.md) |
+
+### Multimedia & Design
+
+| # | MCP Server | Description | Docker Hub Pulls | Link |
+|---|------------|-------------|------------------|------|
+| 1 | gyazo | Screenshot capturing and sharing service | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/gyazo.md) |
+| 2 | handwriting-ocr | Optical character recognition for handwritten text | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/handwriting-ocr.md) |
+| 3 | webflow | Visual website design and content management system | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/webflow.md) |
+| 4 | youtube_transcript | YouTube video transcript extraction | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/youtube_transcript.md) |
+
+
 
 ### Installation Steps
 
