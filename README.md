@@ -36,7 +36,7 @@ A comprehensive curated list of containerised MCP Servers, Clients and toolkits.
   - [Hosting Solutions](#hosting-solutions)
   - [Templates](#templates)
 
-## MCP Servers
+## Containerised MCP Servers
 
 ### DevOps & Infrastructure
 
