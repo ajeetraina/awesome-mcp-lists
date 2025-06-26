@@ -1,0 +1,493 @@
+/* Blog-specific styles for MCP Portal */
+
+.main-nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #2d3748;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 8px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon::before {
+    content: "MCP";
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.blog-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.blog-header h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.blog-header .tagline {
+    font-size: 1.3em;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin: 60px 0;
+}
+
+.featured-posts h2,
+.recent-posts h2 {
+    font-size: 2.2em;
+    color: #2d3748;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.blog-post {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.blog-post.featured {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+}
+
+.post-image {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+}
+
+.placeholder-image {
+    font-size: 3em;
+    color: white;
+}
+
+.post-content {
+    padding: 25px;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.category {
+    background: #667eea;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.8em;
+}
+
+.post-content time {
+    color: #718096;
+}
+
+.post-content h3 {
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    line-height: 1.4;
+}
+
+.post-content h3 a {
+    text-decoration: none;
+    color: #2d3748;
+    transition: color 0.3s ease;
+}
+
+.post-content h3 a:hover {
+    color: #667eea;
+}
+
+.post-content p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.tag {
+    background: #f7fafc;
+    color: #4a5568;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    text-decoration: none;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.blog-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.widget {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.widget h3 {
+    color: #2d3748;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+}
+
+.category-list li {
+    margin-bottom: 10px;
+}
+
+.category-list a {
+    text-decoration: none;
+    color: #4a5568;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f7fafc;
+    transition: color 0.2s ease;
+}
+
+.category-list a:hover {
+    color: #667eea;
+}
+
+.category-list span {
+    color: #a0aec0;
+    font-size: 0.9em;
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.newsletter-signup {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.newsletter-signup h3 {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.newsletter-form input {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.newsletter-form button {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.newsletter-form button:hover {
+    transform: translateY(-2px);
+}
+
+.newsletter-note {
+    font-size: 0.8em;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.resource-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.resource-link {
+    text-decoration: none;
+    padding: 15px;
+    background: #f7fafc;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    transition: background 0.2s ease;
+}
+
+.resource-link:hover {
+    background: #e2e8f0;
+}
+
+.resource-link strong {
+    display: block;
+    color: #2d3748;
+    margin-bottom: 4px;
+}
+
+.resource-link span {
+    color: #718096;
+    font-size: 0.9em;
+}
+
+.newsletter-cta {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 60px 0;
+    border-radius: 20px;
+    text-align: center;
+    margin: 60px 0;
+}
+
+.cta-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.cta-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: white;
+    color: #667eea;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #667eea;
+}
+
+.main-footer {
+    background: #2d3748;
+    color: white;
+    padding: 40px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+    color: #667eea;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul a {
+    color: #a0aec0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-section ul a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid #4a5568;
+    padding-top: 20px;
+    text-align: center;
+    color: #a0aec0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .blog-post.featured {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .blog-header h1 {
+        font-size: 2.5em;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .blog-header {
+        padding: 50px 0;
+    }
+    
+    .blog-header h1 {
+        font-size: 2em;
+    }
+    
+    .post-content {
+        padding: 20px;
+    }
+    
+    .widget {
+        padding: 20px;
+    }
+}
