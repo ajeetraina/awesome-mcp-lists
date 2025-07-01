@@ -50,7 +50,7 @@ MCP servers for managing infrastructure, containers, and DevOps workflows.
 | 4 | gitlab | Interact with GitLab repositories and CI/CD pipelines | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/gitlab.md) |
 | 5 | circleci | Manage CI/CD pipelines and workflows in CircleCI | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/circleci.md) |
 | 6 | **AWS Comprehensive** | Complete AWS service integration suite (20+ services) | TBD | [AWS Labs](https://github.com/awslabs/mcp) |
-| 7 | **Terraform** | Infrastructure as Code management | TBD | [Docker Hub](https://hub.docker.com/r/hashicorp/terraform-mcp-server) |
+| 7 | **Terraform** | Infrastructure as Code management | **22.3K+** | [Docker Hub](https://hub.docker.com/r/hashicorp/terraform-mcp-server) |
 | 8 | pulumi | Infrastructure as code platform | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/pulumi.md) |
 | 9 | heroku | Cloud platform as a service (PaaS) | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/heroku.md) |
 | 10 | jetbrains | Integrate with JetBrains IDEs and tools | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/jetbrains.md) |
@@ -62,7 +62,7 @@ MCP servers for accessing and managing databases and storage solutions.
 | # | MCP Server | Description | Docker Hub Pulls | Link |
 |---|------------|-------------|------------------|------|
 | 1 | postgres | Interact with PostgreSQL databases | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/postgres.md) |
-| 2 | **MongoDB** | MongoDB database integration | TBD | [Docker Hub](https://hub.docker.com/r/mongodb/mongodb-mcp-server) |
+| 2 | **MongoDB** | MongoDB database integration | **4.2K+** | [Docker Hub](https://hub.docker.com/r/mongodb/mongodb-mcp-server) |
 | 3 | redis | Interact with Redis in-memory data structure store | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/redis.md) |
 | 4 | elasticsearch | Search, analyze, and visualize data with Elasticsearch | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/elasticsearch.md) |
 | 5 | chroma | Interact with Chroma vector database for embeddings and retrieval | TBD | [GitHub](https://github.com/docker/labs-ai-tools-for-devs/blob/main/prompts/mcp/chroma.md) |
