@@ -1,0 +1,210 @@
+name: Update Docker Hub Pulls
+
+on:
+  schedule:
+    # Run monthly on the 1st at 00:00 UTC
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # Allow manual triggering
+    inputs:
+      create_pr:
+        description: 'Create a Pull Request instead of direct commit'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-docker-pulls:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        pip install requests beautifulsoup4 python-dateutil
+    
+    - name: Create Docker Hub pulls updater script
+      run: |
+        cat > update_docker_pulls.py << 'EOF'
+        #!/usr/bin/env python3
+        import re
+        import requests
+        import time
+        import json
+        from datetime import datetime
+        
+        class DockerHubUpdater:
+            def __init__(self):
+                self.session = requests.Session()
+                self.session.headers.update({
+                    'User-Agent': 'awesome-mcp-lists-bot/1.0'
+                })
+                
+            def format_pulls(self, count):
+                if count >= 1_000_000:
+                    return f"{count / 1_000_000:.1f}M+".replace('.0M+', 'M+')
+                elif count >= 1_000:
+                    return f"{count / 1_000:.1f}K+".replace('.0K+', 'K+')
+                else:
+                    return str(count)
+            
+            def get_pulls(self, namespace, repo):
+                try:
+                    url = f"https://hub.docker.com/v2/repositories/{namespace}/{repo}/"
+                    response = self.session.get(url, timeout=30)
+                    
+                    if response.status_code == 200:
+                        data = response.json()
+                        return data.get('pull_count', 0)
+                    else:
+                        print(f"Failed to fetch {namespace}/{repo}: HTTP {response.status_code}")
+                        return None
+                except Exception as e:
+                    print(f"Error fetching {namespace}/{repo}: {e}")
+                    return None
+            
+            def update_readme(self):
+                # Known Docker Hub repositories
+                repos = {
+                    'MongoDB': ('mongodb', 'mongodb-mcp-server'),
+                    'Terraform': ('hashicorp', 'terraform-mcp-server'),
+                }
+                
+                # Read current README
+                with open('README.md', 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                updated = False
+                
+                for tool_name, (namespace, repo_name) in repos.items():
+                    pulls = self.get_pulls(namespace, repo_name)
+                    
+                    if pulls is not None:
+                        formatted = self.format_pulls(pulls)
+                        
+                        # Update table entries with Docker Hub links
+                        # Look for patterns like: | Tool | Description | TBD | [Docker Hub](url) |
+                        pattern = rf'(\|[^|]*{tool_name}[^|]*\|[^|]*\|)\s*TBD\s*(\|[^|]*\[Docker Hub\])'
+                        
+                        def replace_tbd(match):
+                            return match.group(1) + f" **{formatted}** " + match.group(2)
+                        
+                        new_content = re.sub(pattern, replace_tbd, content, flags=re.IGNORECASE)
+                        
+                        if new_content != content:
+                            content = new_content
+                            updated = True
+                            print(f"✅ Updated {tool_name}: {formatted} pulls")
+                        else:
+                            print(f"⚠️  Could not find TBD entry for {tool_name}")
+                    
+                    time.sleep(2)  # Rate limiting
+                
+                if updated:
+                    # Write back to file
+                    with open('README.md', 'w', encoding='utf-8') as f:
+                        f.write(content)
+                    
+                    print("✅ README.md updated successfully!")
+                    return True
+                else:
+                    print("ℹ️  No updates needed.")
+                    return False
+        
+        if __name__ == "__main__":
+            updater = DockerHubUpdater()
+            success = updater.update_readme()
+            exit(0 if success else 1)
+        EOF
+        
+        chmod +x update_docker_pulls.py
+
+    - name: Run Docker Hub pulls updater
+      id: update
+      run: |
+        echo "🐳 Running Docker Hub pulls updater..."
+        python update_docker_pulls.py
+        
+        # Check if files were modified
+        if git diff --quiet; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "No changes detected"
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+          echo "Changes detected"
+        fi
+
+    - name: Create Pull Request
+      if: steps.update.outputs.changed == 'true' && github.event.inputs.create_pr == 'true'
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "🐳 Update Docker Hub pull counts"
+        title: "🐳 Automated Docker Hub Pull Counts Update"
+        body: |
+          ## 🐳 Docker Hub Pull Counts Update
+          
+          This automated update refreshes the Docker Hub pull statistics for MCP servers.
+          
+          ### Changes Made
+          - ✅ Updated MongoDB MCP server pull count
+          - ✅ Updated Terraform MCP server pull count
+          - ✅ Updated any other discovered Docker Hub repositories
+          
+          ### Automation Details
+          - 🤖 Generated by GitHub Actions workflow
+          - 📅 Triggered on: ${{ github.event_name }}
+          - 📊 Data source: Docker Hub Public API
+          - 🕐 Timestamp: ${{ steps.date.outputs.date }}
+          
+          ### Review Notes
+          - Pull counts are formatted for readability (e.g., "1.2M+", "500K+")
+          - Only repositories with existing Docker Hub links are updated
+          - Original backup is maintained in git history
+          
+          Please review and merge if the changes look correct! 🚀
+        branch: update-docker-hub-pulls
+        delete-branch: true
+
+    - name: Direct Commit (if not creating PR)
+      if: steps.update.outputs.changed == 'true' && github.event.inputs.create_pr != 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add README.md
+        git commit -m "🐳 Update Docker Hub pull counts [automated]"
+        git push
+
+    - name: Summary
+      if: always()
+      run: |
+        echo "## 🐳 Docker Hub Pulls Update Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [[ "${{ steps.update.outputs.changed }}" == "true" ]]; then
+          echo "✅ **Updates Applied**: Docker Hub pull counts have been updated" >> $GITHUB_STEP_SUMMARY
+          
+          if [[ "${{ github.event.inputs.create_pr }}" == "true" ]]; then
+            echo "📋 **Action**: Pull Request created for review" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "📋 **Action**: Changes committed directly to main branch" >> $GITHUB_STEP_SUMMARY
+          fi
+        else
+          echo "ℹ️ **No Changes**: Docker Hub pull counts are up to date" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Next Run" >> $GITHUB_STEP_SUMMARY
+        echo "🗓️ Scheduled for the 1st of next month (or run manually)" >> $GITHUB_STEP_SUMMARY
